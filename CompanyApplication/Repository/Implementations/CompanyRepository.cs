@@ -29,6 +29,7 @@ namespace Repository.Implementations
         public bool Delete(Company entity)
         {
             throw new NotImplementedException();
+            //gjhgjh
         }
 
         public Company Get(Predicate<Company> filter)
