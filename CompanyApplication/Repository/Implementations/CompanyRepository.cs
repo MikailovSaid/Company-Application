@@ -29,12 +29,11 @@ namespace Repository.Implementations
         public bool Delete(Company entity)
         {
             throw new NotImplementedException();
-            //gjhgjh
         }
 
-        public Company Get(Predicate<Company> filter)
+        public Company Get(Predicate<Company> filter = null)
         {
-            throw new NotImplementedException();
+            return filter == null ? AppDbContext<Company>.datas[0] : AppDbContext<Company>.datas.Find(filter);
         }
 
         public List<Company> GetAll(Predicate<Company> filter)

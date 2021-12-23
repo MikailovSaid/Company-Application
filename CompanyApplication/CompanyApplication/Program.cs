@@ -9,8 +9,7 @@ namespace CompanyApplication
     {
         static void Main(string[] args)
         {
-            static void Main(string[] args)
-            {
+            
                 CompanyService companyService = new CompanyService();
                 Helper.WriteToConsole(ConsoleColor.Blue, "Select options");
 
@@ -44,8 +43,7 @@ namespace CompanyApplication
 
                                 if (result != null)
                                 {
-                                    Helper.WriteToConsole(ConsoleColor.Green, $"Name: {company.Name} - Adress: {companyAdress}");
-                                    return;
+                                    Helper.WriteToConsole(ConsoleColor.Green, $"Id: {company.Id} - Name: {company.Name} - Adress: {company.Adress}");
                                 }
                                 else
                                 {
@@ -58,6 +56,31 @@ namespace CompanyApplication
                             case 3:
                                 break;
                             case 4:
+                                Helper.WriteToConsole(ConsoleColor.Cyan, "Add company ID:");
+                                EnterId: string companyId = Console.ReadLine();
+                                int id;
+
+                                bool isIdTrue = int.TryParse(companyId, out id);
+
+                                if (isIdTrue)
+                                {
+                                    var companys = companyService.GetById(id);
+
+                                    if(companys == null)
+                                    {
+                                        Helper.WriteToConsole(ConsoleColor.Red, "Company not found. Enter company ID again:");
+                                        goto EnterId;
+                                    }
+                                    else
+                                    {
+                                        Helper.WriteToConsole(ConsoleColor.Green, $"Name: {companys.Name} - Adress: {companys.Name}");
+                                    }
+                                }
+                                else
+                                {
+                                    Helper.WriteToConsole(ConsoleColor.Red, "Try again id:");
+                                    goto EnterId;
+                                }
                                 break;
                         }
                     }
@@ -66,7 +89,7 @@ namespace CompanyApplication
                         goto EnterOption;
                     }
                 }
-            }
+            
         }
     }
 }
