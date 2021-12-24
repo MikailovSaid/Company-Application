@@ -52,7 +52,29 @@ namespace Repository.Implementations
 
         public bool Update(Company entity)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var company = Get(m => m.Id == entity.Id);
+                if (company != null)
+                {
+                    if(!string.IsNullOrEmpty(entity.Name))
+                        company.Name = entity.Name;
+                    
+                    if(!string.IsNullOrEmpty(entity.Adress))
+                        company.Adress = entity.Adress;
+                    
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
         }
     }
 }

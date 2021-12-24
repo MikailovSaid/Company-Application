@@ -16,9 +16,9 @@ namespace CompanyApplication.Controllers
         }
         public void Create()
         {
-            Helper.WriteToConsole(ConsoleColor.Cyan, "Add company name:");
+            Helper.WriteToConsole(ConsoleColor.Cyan, "Add name for company:");
             EnterName: string companyName = Console.ReadLine();
-            Helper.WriteToConsole(ConsoleColor.Cyan, "Add company adress:");
+            Helper.WriteToConsole(ConsoleColor.Cyan, "Add address for company:");
             string companyAdress = Console.ReadLine();
 
             Company company = new Company()
@@ -30,7 +30,7 @@ namespace CompanyApplication.Controllers
 
             if (result != null)
             {
-                Helper.WriteToConsole(ConsoleColor.Green, $"Id: {company.Id} - Name: {company.Name} - Adress: {company.Adress}");
+                Helper.WriteToConsole(ConsoleColor.Green, $"Id: {company.Id} - Name: {company.Name} - Address: {company.Adress}");
             }
             else
             {
@@ -40,7 +40,7 @@ namespace CompanyApplication.Controllers
         }
         public void GetById()
         {
-            Helper.WriteToConsole(ConsoleColor.Cyan, "Add company ID:");
+            Helper.WriteToConsole(ConsoleColor.Cyan, "Add company's ID:");
             EnterId: string companyId = Console.ReadLine();
             int id;
 
@@ -56,7 +56,7 @@ namespace CompanyApplication.Controllers
                 }
                 else
                 {
-                    Helper.WriteToConsole(ConsoleColor.Green, $"Name: {companys.Name} - Adress: {companys.Name}");
+                    Helper.WriteToConsole(ConsoleColor.Green, $"Name: {companys.Name} - Address: {companys.Name}");
                 }
             }
             else
@@ -67,7 +67,7 @@ namespace CompanyApplication.Controllers
         }
         public void Delete()
         {
-            Helper.WriteToConsole(ConsoleColor.Cyan, "Add company ID:");
+            Helper.WriteToConsole(ConsoleColor.Cyan, "Add company's ID:");
         EnterId: string companyId = Console.ReadLine();
             int id;
 
@@ -79,7 +79,7 @@ namespace CompanyApplication.Controllers
 
                 if (companys == null)
                 {
-                    Helper.WriteToConsole(ConsoleColor.Red, "Company not found. Enter company ID again:");
+                    Helper.WriteToConsole(ConsoleColor.Red, "Company not found. Enter company's ID again:");
                     goto EnterId;
                 }
                 else
@@ -90,7 +90,7 @@ namespace CompanyApplication.Controllers
             }
             else
             {
-                Helper.WriteToConsole(ConsoleColor.Red, "Try again id:");
+                Helper.WriteToConsole(ConsoleColor.Red, "Try again:");
                 goto EnterId;
             }
         }
@@ -100,7 +100,40 @@ namespace CompanyApplication.Controllers
 
             foreach (var item in companies)
             {
-                Helper.WriteToConsole(ConsoleColor.Green, $"Id: {item.Id} - Name: {item.Name} - Adress: {item.Adress}");
+                Helper.WriteToConsole(ConsoleColor.Green, $"Id: {item.Id} - Name: {item.Name} - Address: {item.Adress}");
+            }
+        }
+        public void Update()
+        {
+            Helper.WriteToConsole(ConsoleColor.Cyan, "Add company's ID:");
+        EnterId: string companyId = Console.ReadLine();
+            int id;
+            bool isIdTrue = int.TryParse(companyId, out id);
+
+            Helper.WriteToConsole(ConsoleColor.Cyan, "Add new name for company:");
+            string newName = Console.ReadLine();
+
+            Helper.WriteToConsole(ConsoleColor.Cyan, "Add new address for company:");
+            string newAddress = Console.ReadLine();
+
+            if (isIdTrue)
+            {
+                Company company = new Company
+                {
+                    Name = newName,
+                    Adress = newAddress
+                };
+
+                Company newCompany = _companyService.Update(id, company);
+
+                Helper.WriteToConsole(ConsoleColor.Green, $"ID: {newCompany.Id} - New Name: {newCompany.Name} - New Address: {newCompany.Adress}");
+
+
+            }
+            else
+            {
+                Helper.WriteToConsole(ConsoleColor.Red, "Company not found. Try again:");
+                goto EnterId;
             }
         }
     }

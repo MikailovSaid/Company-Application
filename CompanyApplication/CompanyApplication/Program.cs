@@ -30,7 +30,8 @@ namespace CompanyApplication
                         case (int)MyEnums.Menus.CreateCompany:
                             companyController.Create();
                             break;
-                        case 2:
+                        case (int)MyEnums.Menus.UpdateCompany:
+                            companyController.Update();
                             break;
                         case (int)MyEnums.Menus.DeleteCompany:
                             companyController.Delete();
