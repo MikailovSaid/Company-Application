@@ -48,15 +48,15 @@ namespace CompanyApplication.Controllers
 
             if (isIdTrue)
             {
-                var companys = _companyService.GetById(id);
+                var companies = _companyService.GetById(id);
 
-                if (companys == null)
+                if (companies == null)
                 {
                     Helper.WriteToConsole(ConsoleColor.Red, "Company not found.");
                 }
                 else
                 {
-                    Helper.WriteToConsole(ConsoleColor.Green, $"Name: {companys.Name} - Address: {companys.Name}");
+                    Helper.WriteToConsole(ConsoleColor.Green, $"Name: {companies.Name} - Address: {companies.Name}");
                 }
             }
             else
@@ -135,6 +135,24 @@ namespace CompanyApplication.Controllers
                 Helper.WriteToConsole(ConsoleColor.Red, "Company not found. Try again:");
                 goto EnterId;
             }
+        }
+        public void GetAllByName()
+        {
+            Helper.WriteToConsole(ConsoleColor.Cyan, "Enter the names of the companies:");
+            string name = Console.ReadLine();
+            var companies = _companyService.GetAllByName(name);
+            foreach (var item in companies)
+            {
+                if (companies == null)
+                {
+                    Helper.WriteToConsole(ConsoleColor.Red, "Companies not found.");
+                }
+                else
+                {
+                    Helper.WriteToConsole(ConsoleColor.Green, $"ID: {item.Id} - Name: {item.Name} - Address: {item.Adress}");
+                }
+            }
+            
         }
     }
 }

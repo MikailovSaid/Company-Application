@@ -49,7 +49,7 @@ namespace Service.Services
 
         public List<Company> GetAllByName(string name)
         {
-            throw new NotImplementedException();
+            return _companyRepository.GetAll(m => m.Name == name);
         }
     }
 }

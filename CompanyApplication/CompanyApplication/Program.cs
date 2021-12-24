@@ -39,7 +39,8 @@ namespace CompanyApplication
                         case (int)MyEnums.Menus.GetCompanyById:
                             companyController.GetById();
                             break;
-                        case 5:
+                        case (int)MyEnums.Menus.GetAllCompanyByName:
+                            companyController.GetAllByName();
                             break;
                         case (int)MyEnums.Menus.GetAllCompany:
                             companyController.GetAll();
