@@ -61,6 +61,9 @@ namespace CompanyApplication
                         case (int)MyEnums.Menus.GetEmployeeByAge:
                             employeeController.GetByAge();
                             break;
+                        case (int)MyEnums.Menus.GetAllEmployeeByCompanyId:
+                            employeeController.GetAllByCompanyId();
+                            break;
 
                     }
                 }

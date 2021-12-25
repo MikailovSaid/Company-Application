@@ -12,6 +12,6 @@ namespace Service.Services.Interfaces
         void Delete(Employee model);
         Employee GetById(int id);
         Employee GetEmployeeByAge(int age);
-        Employee GetEmployeeByCompanyId(Company id);
+        List<Employee> GetAllEmployeeByCompanyId(int id);
     }
 }

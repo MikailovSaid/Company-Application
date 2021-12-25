@@ -47,7 +47,7 @@ namespace Repository.Implementations
 
         public List<Employee> GetAll(Predicate<Employee> filter)
         {
-            throw new NotImplementedException();
+            return filter == null ? AppDbContext<Employee>.datas : AppDbContext<Employee>.datas.FindAll(filter);
         }
 
         public bool Update(Employee entity)

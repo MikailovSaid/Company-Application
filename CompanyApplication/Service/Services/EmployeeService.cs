@@ -54,9 +54,9 @@ namespace Service.Services
             return _employeeRepository.Get(m => m.Age == age);
         }
 
-        public Employee GetEmployeeByCompanyId(Company id)
+        public List<Employee> GetAllEmployeeByCompanyId(int id)
         {
-            throw new NotImplementedException();
+            return _employeeRepository.GetAll(m => m.Company.Id == id);
         }
 
         public Employee Update(int id, Employee model)

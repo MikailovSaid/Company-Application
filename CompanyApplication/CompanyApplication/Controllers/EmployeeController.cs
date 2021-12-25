@@ -189,5 +189,25 @@ namespace CompanyApplication.Controllers
                 goto EnterId;
             }
         }
+        public void GetAllByCompanyId()
+        {
+            Helper.WriteToConsole(ConsoleColor.Cyan, "Enter the company's ID:");
+            string companyId = Console.ReadLine();
+            int id;
+            bool isIdTrue = int.TryParse(companyId, out id);
+
+            var result = _employeeService.GetAllEmployeeByCompanyId(id);
+            foreach (var item in result)
+            {
+                if (result == null)
+                {
+                    Helper.WriteToConsole(ConsoleColor.Red, "Companies not found.");
+                }
+                else
+                {
+                    Helper.WriteToConsole(ConsoleColor.Green, $"ID: {item.Id} - Name: {item.Name} - Surname: {item.Surname} - works in {item.Company.Name}");
+                }
+            }
+        }
     }
 }
