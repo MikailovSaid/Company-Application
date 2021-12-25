@@ -58,6 +58,9 @@ namespace CompanyApplication
                         case (int)MyEnums.Menus.DeleteEmployee:
                             employeeController.Delete();
                             break;
+                        case (int)MyEnums.Menus.GetEmployeeByAge:
+                            employeeController.GetByAge();
+                            break;
 
                     }
                 }

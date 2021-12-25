@@ -51,7 +51,7 @@ namespace Service.Services
 
         public Employee GetEmployeeByAge(int age)
         {
-            throw new NotImplementedException();
+            return _employeeRepository.Get(m => m.Age == age);
         }
 
         public Employee GetEmployeeByCompanyId(Company id)
