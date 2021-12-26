@@ -13,7 +13,7 @@ namespace CompanyApplication
             CompanyController companyController = new CompanyController();
             EmployeeController employeeController = new EmployeeController();
             
-            Helper.WriteToConsole(ConsoleColor.Blue, "Select options");
+            Helper.WriteToConsole(ConsoleColor.Yellow, "Select options");
 
             while (true)
             {

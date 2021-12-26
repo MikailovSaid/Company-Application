@@ -16,9 +16,9 @@ namespace CompanyApplication.Controllers
         }
         public void Create()
         {
-            Helper.WriteToConsole(ConsoleColor.Cyan, "Add name for company:");
+            Helper.WriteToConsole(ConsoleColor.Yellow, "Add name for company:");
             EnterName: string companyName = Console.ReadLine();
-            Helper.WriteToConsole(ConsoleColor.Cyan, "Add address for company:");
+            Helper.WriteToConsole(ConsoleColor.Yellow, "Add address for company:");
             string companyAdress = Console.ReadLine();
 
             Company company = new Company()
@@ -40,7 +40,7 @@ namespace CompanyApplication.Controllers
         }
         public void GetById()
         {
-            Helper.WriteToConsole(ConsoleColor.Cyan, "Add company's ID:");
+            Helper.WriteToConsole(ConsoleColor.Yellow, "Add company's ID:");
             EnterId: string companyId = Console.ReadLine();
             int id;
 
@@ -67,7 +67,7 @@ namespace CompanyApplication.Controllers
         }
         public void Delete()
         {
-            Helper.WriteToConsole(ConsoleColor.Cyan, "Add company's ID:");
+            Helper.WriteToConsole(ConsoleColor.Yellow, "Add company's ID:");
         EnterId: string companyId = Console.ReadLine();
             int id;
 
@@ -105,15 +105,15 @@ namespace CompanyApplication.Controllers
         }
         public void Update()
         {
-            Helper.WriteToConsole(ConsoleColor.Cyan, "Add company's ID:");
+            Helper.WriteToConsole(ConsoleColor.Yellow, "Add company's ID:");
         EnterId: string companyId = Console.ReadLine();
             int id;
             bool isIdTrue = int.TryParse(companyId, out id);
 
-            Helper.WriteToConsole(ConsoleColor.Cyan, "Add new name for company:");
+            Helper.WriteToConsole(ConsoleColor.Yellow, "Add new name for company:");
             string newName = Console.ReadLine();
 
-            Helper.WriteToConsole(ConsoleColor.Cyan, "Add new address for company:");
+            Helper.WriteToConsole(ConsoleColor.Yellow, "Add new address for company:");
             string newAddress = Console.ReadLine();
 
             if (isIdTrue)
@@ -138,7 +138,7 @@ namespace CompanyApplication.Controllers
         }
         public void GetAllByName()
         {
-            Helper.WriteToConsole(ConsoleColor.Cyan, "Enter the names of the companies:");
+            Helper.WriteToConsole(ConsoleColor.Yellow, "Enter the names of the companies:");
             string name = Console.ReadLine();
             var companies = _companyService.GetAllByName(name);
             foreach (var item in companies)

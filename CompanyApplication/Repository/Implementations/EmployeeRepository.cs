@@ -63,7 +63,7 @@ namespace Repository.Implementations
                     if (!string.IsNullOrEmpty(entity.Surname))
                         employee.Surname = entity.Surname;
 
-                    if (!string.IsNullOrEmpty(entity.Age.ToString()))
+                    if (!string.IsNullOrEmpty(entity.Age.ToString()))   
                         employee.Age = entity.Age;
 
                     return true;
